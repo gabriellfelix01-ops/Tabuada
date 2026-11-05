@@ -1,22 +1,21 @@
-
-const formMultiplicacao = document.querySelector("#form-multiplicacao")
-const inputNumero = document.querySelector("#number")
-const inputMultiplicacao = document.querySelector("#multiplicacao")
-const tabelaMultiplicacao = document.querySelector("#tabela-resultados")
+const formMultiplicacao = document.querySelector("#form-multiplicacao");
+const inputNumero = document.querySelector("#number");
+const inputMultiplicacao = document.querySelector("#multiplicacao");
+const tabelaMultiplicacao = document.querySelector("#tabela-resultados");
 
 formMultiplicacao.addEventListener("submit", (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    const numberMultiplicando = +inputNumero.value
-    const numberMultiplicacao = +inputMultiplicacao.value
-    createTable(numberMultiplicando, numberMultiplicacao)
-})
+    const numberMultiplicando = +inputNumero.value;
+    const numberMultiplicacao = +inputMultiplicacao.value;
+    createTable(numberMultiplicando, numberMultiplicacao);
+});
 
 const createTable = (numberMultiplicando, numberMultiplicacao) => {
-    tabelaMultiplicacao.innerHTML = ""
+    tabelaMultiplicacao.innerHTML = "";
 
     for (let i = 1; i <= numberMultiplicacao; i++) {
-        const result = numberMultiplicando * i
+        const result = numberMultiplicando * i;
 
         const template = `
             <div class="row">
@@ -25,12 +24,12 @@ const createTable = (numberMultiplicando, numberMultiplicacao) => {
                 </div>
                 <div class="result">${result}</div>
             </div>
-        `
+        `;
 
-        const parser = new DOMParser()
-        const htmlTemplate = parser.parseFromString(template, "text/html")
-        const row = htmlTemplate.querySelector(".row")
+        const parser = new DOMParser();
+        const htmlTemplate = parser.parseFromString(template, "text/html");
+        const row = htmlTemplate.querySelector(".row");
 
-        tabelaMultiplicacao.appendChild(row)
+        tabelaMultiplicacao.appendChild(row);
     }
-}
+};
